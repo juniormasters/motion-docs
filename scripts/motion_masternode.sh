@@ -211,6 +211,8 @@ fi
 # cd to motion-cli for final, no real need to run cli with commands as service when you can just cd there
 echo && echo "Motion Masternode Setup Complete!"
 
-echo && echo "If you put correct PrivKey and VPS IP the daemon should be running, wait 2 minutes then run motion-cli getinfo to check blocks, when synced you can start ALIAS on local wallet and finally check here with motion-cli masternode status"
+echo && echo "If you put correct PrivKey and VPS IP the daemon should be running."
+echo && echo "Wait 2 minutes then run motion-cli getinfo to check blocks."
+echo && echo "when fully synced you can start ALIAS on local wallet and finally check here with motion-cli masternode status."
 
 
