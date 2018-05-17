@@ -22,7 +22,7 @@ echo "██████████████████▓░     ░▓█
 echo "███████████████████▒     ▒███████████████████████████▓▓▓▓▓█████████████████████"
 echo "█████████████████████▓▓▓███████████████████████████████████████████████████████"
 echo && echo && echo
-sleep 3
+sleep 2
 
 # Check if is root
 if [ "$(whoami)" != "root" ]; then
@@ -34,7 +34,8 @@ fi
 systemctl --version >/dev/null 2>&1 || { echo "systemd is required. Are you using Ubuntu 16.04 (Xenial)?"  >&2; exit 1; }
 
 # Gather input from user
-read -e -p "Masternode Private Key (e.g. 7edfjLCUzGczZi3JQw8GHp434R9kNY33eFyMGeKRymkB56G4324h) : " key
+echo "Enter your Masternode Private Key"
+read -e -p "(e.g. 7edfjLCUzGczZi3JQw8GHp434R9kNY33eFyMGeKRymkB56G4324h) : " key
 if [[ "$key" == "" ]]; then
     echo "WARNING: No private key entered, exiting!!!"
     echo && exit
