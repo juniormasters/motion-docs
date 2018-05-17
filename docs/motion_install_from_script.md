@@ -18,18 +18,25 @@ Local Wallet Setup
 Open your wallet on your desktop, click Receive, put your Label such as “MN1” then click Request and Copy the Address and Send EXACTLY 1000 MTN to this Address.
 
 Wait for at least 15 confirmations then go to the tab at the bottom that says "Tools" and click at the top that says "Console" then run following command: 
-masternode outputs
+
+``masternode outputs``
+
 You should see one line corresponding to the transaction id (tx_id) of your 1000 coins with a digit identifier (digit). Save these two strings in a text file.
 Example: 
-{ "6a66ad6011ee363c2d97da0b55b73584fef376dc0ef43137b478aa73b4b906b0": "0" }
+``{ "6a66ad6011ee363c2d97da0b55b73584fef376dc0ef43137b478aa73b4b906b0": "0" }``
 Note that if you get more than 1 line, it’s because you made multiple 1000 coins transactions, with the tx_id and digit associated.
 Run the following command:
-masternode genkey
+
+``masternode genkey``
+
 You should see a long key: (masternodeprivkey) EXAMPLE: 7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-This is your masternode private key, record it to text file, keep it safe, do not share with anyone. This will be called “masternodeprivkey”
+
+This is your masternode private key, record it to text file, keep it safe, do not share with anyone. This will be called “masternodeprivkey”. 
 Next, you have to go to the data directory of your wallet Go to wallet settings=> and click “Open masternode configuration file” You should see 2 lines both with a # to comment them out.
 Please make a new line and add:
-MN1 (YOUR VPS IP):7979 masternodeprivkey tx_id digit
+
+``MN1 (YOUR VPS IP):7979 masternodeprivkey tx_id digit``
+
 Put your data correctly, save it and close. 
 Go to Motion Wallet, Click Settings, Check “Show Masternodes Tab” Save and Restart your wallet.
 Note that each line of the masternode.conf file corresponds to one masternode, if you want to run more than one node from the same wallet, just make a new line with new alias like MN2-MN3… and repeat steps.
@@ -49,21 +56,21 @@ The installation should finish successfully in a few minutes. Ask for help in di
 Please note, the script will move motiond and motion-cli binaries to /usr/bin folder, so you don't need to navigate to motion/src folder anymore, you can run the commands without "./" on any place now.
 After the script finishes, you will want to check that it is running properly. 
 Please type in:
-motion-cli getinfo
+``motion-cli getinfo``
 If you get an error about permissions, you just need to kill the process and restart with:
-killall motiond
+``killall motiond``
 and restart with:
-motiond -daemon
+``motiond -daemon``
 now test with:
-motion-cli getinfo
+``motion-cli getinfo``
 or
-motion-cli getblockcount
+``motion-cli getblockcount``
 If you get an error that file does not exist, it may be that the script failed to build and we need to trace back the problem. Contact devs in discord.
 
 Starting Your Masternode
 
 Go back to your desktop wallet, to the Masternode tab. You need to wait for VPS to be full synced with network, you can check on your VPS by:
-motion-cli getblockcount
+``motion-cli getblockcount``
 (needs to the same block number as explorer to be in sync - check at: explorer.motionproject.org )
 NOTE: If the Masternode tab isn’t showing, you need to click settings, check “Show Masternodes Tab” save, and restart the wallet If your Masternode does not show, restart the wallet
 Now select the Masternode ALIAS you just setup and click START ALIAS and confirm it.
