@@ -48,7 +48,7 @@ if [[ ("$add_swap" == "y" || "$add_swap" == "Y" || "$add_swap" == "") ]]; then
     if [[ "$swap_size" == "" ]]; then
         swap_size="2G"
     fi
-fi    
+fi
 read -e -p "Install Fail2ban? (Recommended) [Y/n] : " install_fail2ban
 read -e -p "Install UFW and configure ports? (Recommended) [Y/n] : " UFW
 
