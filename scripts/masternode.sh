@@ -51,7 +51,6 @@ if [[ ("$add_swap" == "y" || "$add_swap" == "Y" || "$add_swap" == "") ]]; then
     fi
 fi
 read -e -p "Install Fail2ban? (Recommended) [Y/n] : " install_fail2ban
-read -e -p "Install UFW and configure ports? (Recommended) [Y/n] : " UFW
 
 # Add swap if needed
 if [[ ("$add_swap" == "y" || "$add_swap" == "Y" || "$add_swap" == "") ]]; then
@@ -120,22 +119,6 @@ if [[ ("$install_fail2ban" == "y" || "$install_fail2ban" == "Y" || "$install_fai
     sleep 3
     sudo apt-get -y install fail2ban
     sudo service fail2ban restart 
-fi
-
-# Install firewall if needed
-if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
-    echo && echo "Installing UFW..."
-    sleep 3
-    sudo apt-get -y install ufw
-    echo && echo "Configuring UFW..."
-    sleep 3
-    sudo ufw default deny incoming
-    sudo ufw default allow outgoing
-    sudo ufw allow ssh
-    sudo ufw allow 3385/tcp
-    sudo ufw allow 7979/tcp
-    echo "y" | sudo ufw enable
-    echo && echo "Firewall installed and enabled!"
 fi
 
 # Create config for motion
