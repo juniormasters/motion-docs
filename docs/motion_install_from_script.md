@@ -20,7 +20,7 @@ You need a different IP for each masternode you plan to host.
 ### Wallet Setup Part 1
 
 - Open your Motion wallet on your desktop.
-- Click **Receive** tab, then click Request and put your Label such as “MN1”
+- Click **Receive** tab, then put your Label such as “MN1” and click Request button.
 - Copy the Address and Send **EXACTLY** 1000 XMN to this Address, wait for 15 confirmations.
 - Go to the tab at the bottom that says `Tools`
 - Go to the tab at the top that says `Console`
@@ -94,37 +94,36 @@ Now lets run it:
 
 `./masternode.sh`
 
-
 When prompted, enter your `masternodeprivkey` from before.
 
 You will be asked for your VPS IP and a few other questions.
 
 The installation should finish successfully. Ask for help in [discord](https://discord.gg/pTDAaMa) if it doesn't.
 
-Please note, the script will move motiond and motion-cli binaries to /usr/bin folder, so you don't need to navigate to motion/src folder anymore, you can run the commands without "./" on any place now
+Please note, the script will move motiond and motion-cli binaries to /usr/bin folder, so you don't need to navigate to motion/src folder anymore, you can run the commands without "./" on any place now.
 
 ### Testing:
 
 After the script finishes, you will want to check that it is running properly. 
 Please type in:
 
-'motion-cli getinfo'
+`motion-cli getinfo`
 
-If you get an error about permissions, you just need to kill the process and restart with:
+If you put wrong Privkey or VPS-IP by mistake, you need to fix it editing conf file:
 
-'killall motiond'
+`nano /root/.motioncore/motion.conf`
 
-and restart with:
+Put the right data and use CTRL+X, Y and Enter to save, then start the daemon with:
 
-'motiond -daemon'
+`motiond -daemon`
 
 now test with:
 
-'motion-cli getinfo'
+`motion-cli getinfo`
 
 or
 
-'motion-cli getblockcount'
+`motion-cli getblockcount`
 
 If you get an error that file does not exist, it may be that the script failed to build and we need to trace back the problem. Contact devs in [discord](https://discord.gg/pTDAaMa).
 
@@ -146,7 +145,7 @@ Now Click `start-all`. Your masternode should be now up and running!
 ### Checking Your Masternode
 You can check the masternode status by going to the masternode wallet and typing:
  
-`masternode status`
+`motion-cli masternode status`
  
 If your masternode is running it should print `Masternode successfully started`.
  
