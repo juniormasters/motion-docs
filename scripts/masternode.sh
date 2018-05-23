@@ -51,7 +51,8 @@ if [[ ("$add_swap" == "y" || "$add_swap" == "Y" || "$add_swap" == "") ]]; then
     fi
 fi
 read -e -p "Install Fail2ban? (Recommended) [Y/n] : " install_fail2ban
-read -e -p "Install UFW and configure ports? (Recommended) [Y/n] : " UFW
+echo "Install UFW and configure ports? (Recommended)"
+read -e -p "Use N if you have another MN running on this VPS already! [Y/n] : " UFW
 
 # Add swap if needed
 if [[ ("$add_swap" == "y" || "$add_swap" == "Y" || "$add_swap" == "") ]]; then
